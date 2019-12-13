@@ -1,4 +1,4 @@
-#! /usr/bin/python2
+#! /usr/bin/python3
 
 import os
 import sys
@@ -6,7 +6,7 @@ import pandas as pd
 
 filePath = str(sys.argv[1])
 col = int(sys.argv[2])
-desFile = filePath+str(sys.argv[3])
+desFile = str(sys.argv[3])
 # for i in sys.argv:
 #     print(i)
 
@@ -18,7 +18,7 @@ colNameList = []
 
 for fileName in nameList:
 
-    tempFile = pd.read_csv(filePath+fileName, usecols=[col])
+    tempFile = pd.read_csv(fileName, usecols=[col])
 
     colSrcName = tuple(tempFile.columns) #get old col name
     colDesName = fileName[:-4]
@@ -27,7 +27,7 @@ for fileName in nameList:
         outFile = tempFile
     else:
         outFile = pd.concat([outFile,tempFile],axis=1)
-    # print(colNameList)
+    print(colNameList)
     outFile.columns=(colNameList)
     index = index + 1
 
