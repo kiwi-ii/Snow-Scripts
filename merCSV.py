@@ -53,8 +53,11 @@ def merCSV(filePath, col, desFile):
         # outFile.columns=(colNameList)
     
     # 利用最后一组数据创建完整时间列
+    beginDate = '01/01/2013'
     endDate = date_marker[5:7] + '/' + str(int(date_marker[8:10])-1) + '/' + date_marker[0:4]
-    subTime = pd.DataFrame(pd.date_range('01/01/2013', endDate))
+    dateList=[datetime.strftime(x,'%Y-%m-%d') for x in list(pd.date_range(start=beginDate, end=endDate))]
+    # subTime = pd.DataFrame(pd.date_range('01/01/2013', endDate))
+    subTime = pd.DataFrame(dateList)
     subTime.columns = ['Time']  # 修改列名
     timeCol.columns = ['Time']
     timeFile = pd.concat([subTime, timeCol])
