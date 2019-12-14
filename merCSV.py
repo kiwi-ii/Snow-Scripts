@@ -7,7 +7,7 @@
 import os
 import sys
 import pandas as pd
-import datetime
+from datetime import datetime
 import numpy as np
 
 def days(filePath, col, desFile):
