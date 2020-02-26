@@ -22,13 +22,13 @@ def merCSV(filePath, col, desFile):
     # col = colNum
     # colNameList = []
     i = 0
-    date_0 = datetime.datetime(2013, 1, 1)  # 将要输出的起始时间
+    date_0 = datetime(2013, 1, 1)  # 将要输出的起始时间
     for fileName in nameList:
         # 计算导入文件所需NaN行数
         timeCol = pd.read_csv(filePath+fileName, usecols=[0])   # read time column
         date_marker = timeCol['time'][0]    # 读取时间列第一个数据
         # 将读取的str转化为时间
-        date_1 = datetime.datetime(int(date_marker[0:4]), int(date_marker[5:7]), int(date_marker[8:10]))
+        date_1 = datetime(int(date_marker[0:4]), int(date_marker[5:7]), int(date_marker[8:10]))
         dayNum = (date_1 - date_0).days # 计算相差的天数，即为要插入的NaN行数
 
         # 设置城市名为列名
